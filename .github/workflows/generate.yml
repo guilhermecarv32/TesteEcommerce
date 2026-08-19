@@ -1,0 +1,30 @@
+name: Gerar Paginas de Produtos
+
+on:
+  push:
+    paths:
+      - 'produtos.json'
+      - 'build.js'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Gerar HTMLs dos Produtos
+        run: node build.js
+
+      - name: Salvar alteracoes geradas
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-generate product HTMLs from produtos.json"
