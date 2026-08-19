@@ -5,244 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fritadeira Air Fryer Digital 4L - MegaStore</title>
   <style>
-    :root {
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --primary: #6366f1;
-      --primary-hover: #4f46e5;
-      --accent: #22c55e;
-      --border: #334155;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      padding: 2rem 1rem;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      width: 100%;
-      flex: 1;
-    }
-
-    .nav-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-      transition: color 0.2s ease;
-    }
-
-    .nav-back:hover {
-      color: var(--primary);
-    }
-
-    .product-detail-card {
-      background-color: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2.5rem;
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 2.5rem;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-    }
-
-    @media (max-width: 768px) {
-      .product-detail-card {
-        grid-template-columns: 1fr;
-        padding: 1.5rem;
-      }
-    }
-
-    .product-image-box {
-      background-color: #0b1120;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 6rem;
-      min-height: 280px;
-      user-select: none;
-    }
-
-    .product-info {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .category-badge {
-      display: inline-block;
-      align-self: flex-start;
-      font-size: 0.75rem;
-      background-color: var(--border);
-      color: var(--primary);
-      padding: 0.25rem 0.6rem;
-      border-radius: 4px;
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.75rem;
-    }
-
-    /* SELETOR DO NOME DO PRODUTO */
-    .product-title {
-      font-size: 1.6rem;
-      font-weight: 700;
-      line-height: 1.3;
-      margin-bottom: 1rem;
-      color: var(--text-main);
-    }
-
-    .description {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-
-    .specs-list {
-      list-style: none;
-      margin-bottom: 1.5rem;
-      border-top: 1px solid var(--border);
-      padding-top: 1rem;
-    }
-
-    .specs-list li {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 0.4rem;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .specs-list li span:last-child {
-      color: var(--text-main);
-      font-weight: 500;
-    }
-
-    .price-box {
-      background-color: #0b1120;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.25rem;
-      margin-top: auto;
-      margin-bottom: 1.5rem;
-    }
-
-    .price-label {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 0.25rem;
-    }
-
-    .price-wrapper {
-      display: flex;
-      align-items: baseline;
-      gap: 0.4rem;
-    }
-
-    .currency {
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 1.2rem;
-    }
-
-    /* SELETOR DO PREÇO NUMÉRICO (Edite o número interno para simular promoções) */
-    .product-price {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--accent);
-      letter-spacing: -0.02em;
-    }
-
-    .btn-buy {
-      background-color: var(--primary);
-      color: white;
-      text-decoration: none;
-      text-align: center;
-      padding: 0.9rem 1.5rem;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 1rem;
-      display: block;
-      transition: background-color 0.2s ease;
-      cursor: pointer;
-    }
-
-    .btn-buy:hover {
-      background-color: var(--primary-hover);
-    }
-
-    footer {
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-top: 3rem;
-    }
+    :root { --bg: #0f172a; --card-bg: #1e293b; --text: #f8fafc; --muted: #94a3b8; --primary: #6366f1; --accent: #22c55e; --border: #334155; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding: 2rem 1rem; min-height: 100vh; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .nav-back { display: inline-block; color: var(--muted); text-decoration: none; margin-bottom: 1.5rem; }
+    .product-detail { background-color: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem; display: grid; grid-template-columns: 1fr 1.3fr; gap: 2.5rem; }
+    @media (max-width: 768px) { .product-detail { grid-template-columns: 1fr; padding: 1.5rem; } }
+    .product-image { background-color: #0b1120; border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 5rem; min-height: 250px; }
+    .badge { display: inline-block; font-size: 0.75rem; background: var(--border); color: var(--primary); padding: 0.25rem 0.6rem; border-radius: 4px; text-transform: uppercase; font-weight: bold; margin-bottom: 0.75rem; }
+    .product-title { font-size: 1.6rem; margin-bottom: 1rem; line-height: 1.3; }
+    .description { color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; }
+    .price-box { background-color: #0b1120; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-bottom: 1.5rem; }
+    .price-label { font-size: 0.8rem; color: var(--muted); }
+    .price-row { display: flex; align-items: baseline; gap: 0.4rem; margin-top: 0.25rem; }
+    .currency { color: var(--accent); font-size: 1.2rem; font-weight: bold; }
+    .product-price { font-size: 2.2rem; font-weight: bold; color: var(--accent); }
+    .btn-buy { background-color: var(--primary); color: white; border: none; padding: 0.9rem; border-radius: 6px; font-weight: bold; width: 100%; cursor: pointer; }
   </style>
 </head>
 <body>
-
   <div class="container">
     <a href="../index.html" class="nav-back">← Voltar para o Catálogo</a>
-
-    <div class="product-detail-card">
-      <div class="product-image-box">🍟</div>
-
+    <div class="product-detail">
+      <div class="product-image">🍟</div>
       <div class="product-info">
-        <span class="category-badge">Casa & Cozinha</span>
-
-        <!-- SELETOR CSS NO N8N: .product-title -->
+        <span class="badge">Casa & Cozinha</span>
         <h1 class="product-title">Fritadeira Air Fryer Digital 4L</h1>
-
-        <p class="description">
-          Fritadeira sem óleo com painel digital touch screen, cesto antiaderente removível, timer de até 60 minutos e controle de temperatura preciso de 80°C a 200°C.
-        </p>
-
-        <ul class="specs-list">
-          <li><span>Capacidade:</span> <span>4 Litros</span></li>
-          <li><span>Potência:</span> <span>1500W</span></li>
-          <li><span>Voltagem:</span> <span>127V / 220V</span></li>
-          <li><span>Garantia:</span> <span>12 meses</span></li>
-        </ul>
-
+        <p class="description">Fritadeira sem óleo digital touch screen com timer 60 min.</p>
         <div class="price-box">
           <div class="price-label">Preço à vista com desconto:</div>
-          <div class="price-wrapper">
+          <div class="price-row">
             <span class="currency">R$</span>
-            <!-- SELETOR CSS NO N8N: .product-price -->
             <span class="product-price">389.90</span>
           </div>
         </div>
-
         <button class="btn-buy">Comprar Agora</button>
       </div>
     </div>
-
-    <footer>
-      <p>MegaStore Mock E-commerce • Ambiente de testes para scraping e automações n8n.</p>
-    </footer>
   </div>
-
 </body>
 </html>
