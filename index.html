@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechStore - E-commerce de Testes</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --accent: #22c55e;
+      --border: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tag-lab {
+      font-size: 0.75rem;
+      background-color: var(--border);
+      color: var(--text-muted);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .controls {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    input, select {
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--primary);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      flex: 1;
+      width: 100%;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+    }
+
+    .img-wrapper {
+      height: 160px;
+      background-color: #0b1120;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      user-select: none;
+    }
+
+    .info {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .category {
+      font-size: 0.75rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
+    }
+
+    .price-container {
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .price-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .price-value-box {
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+    }
+
+    .currency {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    /* SELETOR PRINCIPAL PARA O N8N */
+    .product-price {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .btn-buy {
+      margin-top: 1rem;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.6rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-buy:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .pagination {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-page {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .btn-page.active {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-page:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    footer {
+      background-color: var(--card-bg);
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      🛒 TechStore
+      <span class="tag-lab">Ambiente de Testes</span>
+    </div>
+    <div class="controls">
+      <input type="text" id="search-input" placeholder="Buscar produto...">
+      <select id="category-filter">
+        <option value="all">Todas as Categorias</option>
+        <option value="Games">Games</option>
+        <option value="Smartphones">Smartphones</option>
+        <option value="Hardware">Hardware</option>
+        <option value="Periféricos">Periféricos</option>
+      </select>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid" id="product-grid"></div>
+    <div class="pagination" id="pagination-controls"></div>
+  </main>
+
+  <footer>
+    <p>TechStore Mock E-commerce • Criado para oficinas e minicursos de automação com n8n.</p>
+  </footer>
+
+  <script>
+    // LISTA DE 20 PRODUTOS (Altere os valores de "price" durante a aula para simular promoções)
+    const products = [
+      { id: 1, name: "PlayStation 5 Slim 1TB", category: "Games", price: "3499.00", icon: "🎮" },
+      { id: 2, name: "Xbox Series X 1TB", category: "Games", price: "4199.00", icon: "🎮" },
+      { id: 3, name: "Nintendo Switch OLED", category: "Games", price: "2100.00", icon: "🕹️" },
+      { id: 4, name: "Grand Theft Auto VI (Pré-venda)", category: "Games", price: "549.90", icon: "💿" },
+      { id: 5, name: "Controle DualSense PS5 Midnight", category: "Games", price: "429.00", icon: "🎮" },
+      
+      { id: 6, name: "iPhone 15 128GB Preto", category: "Smartphones", price: "4899.00", icon: "📱" },
+      { id: 7, name: "Samsung Galaxy S24 Ultra 256GB", category: "Smartphones", price: "6499.00", icon: "📱" },
+      { id: 8, name: "Xiaomi Redmi Note 13 Pro 5G", category: "Smartphones", price: "1899.00", icon: "📱" },
+      { id: 9, name: "Carregador Rápido USB-C 30W", category: "Smartphones", price: "129.90", icon: "🔌" },
+      { id: 10, name: "Fone Galaxy Buds 2 Pro", category: "Smartphones", price: "799.00", icon: "🎧" },
+
+      { id: 11, name: "Placa de Vídeo RTX 4070 12GB", category: "Hardware", price: "3899.00", icon: "📟" },
+      { id: 12, name: "Processador AMD Ryzen 7 5700X", category: "Hardware", price: "1150.00", icon: "🔲" },
+      { id: 13, name: "Memória RAM 16GB DDR4 3200MHz", category: "Hardware", price: "279.00", icon: "💾" },
+      { id: 14, name: "SSD M.2 NVMe 1TB Kingston", category: "Hardware", price: "420.00", icon: "⚡" },
+      { id: 15, name: "Fonte Modular 750W 80 Plus Gold", category: "Hardware", price: "589.00", icon: "🔋" },
+
+      { id: 16, name: "Monitor Gamer 27 165Hz IPS", category: "Periféricos", price: "1299.00", icon: "🖥️" },
+      { id: 17, name: "Teclado Mecânico RGB Switch Red", category: "Periféricos", price: "349.00", icon: "⌨️" },
+      { id: 18, name: "Mouse Gamer Sem Fio 20K DPI", category: "Periféricos", price: "289.00", icon: "🖱️" },
+      { id: 19, name: "Headset Gamer 7.1 Surround", category: "Periféricos", price: "419.00", icon: "🎧" },
+      { id: 20, name: "Cadeira Gamer Ergonômica Pro", category: "Periféricos", price: "990.00", icon: "💺" }
+    ];
+
+    const ITEMS_PER_PAGE = 10;
+    let currentPage = 1;
+    let filteredProducts = [...products];
+
+    const productGrid = document.getElementById("product-grid");
+    const paginationControls = document.getElementById("pagination-controls");
+    const searchInput = document.getElementById("search-input");
+    const categoryFilter = document.getElementById("category-filter");
+
+    function renderProducts() {
+      productGrid.innerHTML = "";
+      
+      const start = (currentPage - 1) * ITEMS_PER_PAGE;
+      const end = start + ITEMS_PER_PAGE;
+      const pageItems = filteredProducts.slice(start, end);
+
+      if (pageItems.length === 0) {
+        productGrid.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: var(--text-muted);'>Nenhum produto encontrado.</p>";
+        return;
+      }
+
+      pageItems.forEach(prod => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.id = `produto-${prod.id}`;
+        card.innerHTML = `
+          <div class="img-wrapper">${prod.icon}</div>
+          <div class="info">
+            <span class="category">${prod.category}</span>
+            <h3 class="product-title">${prod.name}</h3>
+            <div class="price-container">
+              <div class="price-label">Valor à vista:</div>
+              <div class="price-value-box">
+                <span class="currency">R$</span>
+                <span class="product-price">${prod.price}</span>
+              </div>
+            </div>
+            <button class="btn-buy">Comprar</button>
+          </div>
+        `;
+        productGrid.appendChild(card);
+      });
+
+      renderPagination();
+    }
+
+    function renderPagination() {
+      paginationControls.innerHTML = "";
+      const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+      if (totalPages <= 1) return;
+
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.className = `btn-page ${i === currentPage ? "active" : ""}`;
+        btn.textContent = i;
+        btn.addEventListener("click", () => {
+          currentPage = i;
+          renderProducts();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        paginationControls.appendChild(btn);
+      }
+    }
+
+    function filterData() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const selectedCategory = categoryFilter.value;
+
+      filteredProducts = products.filter(p => {
+        const matchesName = p.name.toLowerCase().includes(searchTerm);
+        const matchesCategory = selectedCategory === "all" || p.category === selectedCategory;
+        return matchesName && matchesCategory;
+      });
+
+      currentPage = 1;
+      renderProducts();
+    }
+
+    searchInput.addEventListener("input", filterData);
+    categoryFilter.addEventListener("change", filterData);
+
+    // Inicialização
+    renderProducts();
+  </script>
+</body>
+</html>
