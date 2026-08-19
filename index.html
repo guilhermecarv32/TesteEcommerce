@@ -24,7 +24,13 @@
     .controls { display: flex; gap: 1rem; flex-wrap: wrap; }
     input, select { background-color: var(--bg); border: 1px solid var(--border); color: var(--text-main); padding: 0.6rem 1rem; border-radius: 6px; outline: none; }
     main { max-width: 1200px; margin: 2rem auto; padding: 0 1.5rem; flex: 1; width: 100%; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+    
+    .grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+      gap: 1.5rem; 
+    }
+    
     .product-card { background-color: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease; }
     .product-card:hover { transform: translateY(-4px); border-color: var(--primary); }
     .img-wrapper { height: 160px; background-color: #0b1120; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; user-select: none; }
@@ -37,7 +43,7 @@
     .product-price { font-size: 1.4rem; font-weight: 700; color: var(--accent); }
     .btn-detail { margin-top: 1rem; background-color: var(--primary); color: white; text-decoration: none; text-align: center; padding: 0.6rem; border-radius: 6px; font-weight: 600; display: block; }
     .btn-detail:hover { background-color: var(--primary-hover); }
-    .pagination { margin-top: 2.5rem; display: flex; justify-content: center; gap: 0.5rem; }
+    .pagination { margin-top: 2.5rem; display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; }
     .btn-page { background-color: var(--card-bg); border: 1px solid var(--border); color: var(--text-main); padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600; }
     .btn-page.active { background-color: var(--primary); border-color: var(--primary); }
     footer { background-color: var(--card-bg); border-top: 1px solid var(--border); padding: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: auto; }
@@ -71,7 +77,7 @@
   </footer>
 
   <script>
-    const ITEMS_PER_PAGE = 10;
+    const MAX_ROWS = 3; // Limite fixo de 3 linhas de produtos
     let currentPage = 1;
     let products = [];
     let filteredProducts = [];
@@ -81,7 +87,16 @@
     const searchInput = document.getElementById("search-input");
     const categoryFilter = document.getElementById("category-filter");
 
-    // Carrega a lista do produtos.json dinamicamente
+    // Calcula quantos itens cabem na página baseado no número de colunas (máx 3 linhas)
+    function getItemsPerPage() {
+      const gridWidth = productGrid.clientWidth;
+      const minCardWidth = 260; // Largura mínima do card definida no CSS
+      const gap = 24; // 1.5rem = 24px
+      
+      const columns = Math.max(1, Math.floor((gridWidth + gap) / (minCardWidth + gap)));
+      return columns * MAX_ROWS;
+    }
+
     async function loadData() {
       try {
         const res = await fetch('./produtos.json');
@@ -95,11 +110,18 @@
 
     function renderProducts() {
       productGrid.innerHTML = "";
-      const start = (currentPage - 1) * ITEMS_PER_PAGE;
-      const pageItems = filteredProducts.slice(start, start + ITEMS_PER_PAGE);
+      const itemsPerPage = getItemsPerPage();
+      const totalPages = Math.ceil(filteredProducts.length / itemsPerPage) || 1;
+
+      if (currentPage > totalPages) {
+        currentPage = totalPages;
+      }
+
+      const start = (currentPage - 1) * itemsPerPage;
+      const pageItems = filteredProducts.slice(start, start + itemsPerPage);
 
       if (pageItems.length === 0) {
-        productGrid.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: var(--text-muted);'>Nenhum produto encontrado.</p>";
+        productGrid.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 2rem;'>Nenhum produto encontrado.</p>";
         paginationControls.innerHTML = "";
         return;
       }
@@ -122,19 +144,23 @@
         productGrid.appendChild(card);
       });
 
-      renderPagination();
+      renderPagination(itemsPerPage);
     }
 
-    function renderPagination() {
+    function renderPagination(itemsPerPage) {
       paginationControls.innerHTML = "";
-      const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+      const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
       if (totalPages <= 1) return;
 
       for (let i = 1; i <= totalPages; i++) {
         const btn = document.createElement("button");
         btn.className = `btn-page ${i === currentPage ? "active" : ""}`;
         btn.textContent = i;
-        btn.onclick = () => { currentPage = i; renderProducts(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+        btn.onclick = () => { 
+          currentPage = i; 
+          renderProducts(); 
+          window.scrollTo({ top: 0, behavior: 'smooth' }); 
+        };
         paginationControls.appendChild(btn);
       }
     }
@@ -151,6 +177,15 @@
 
     searchInput.addEventListener("input", filterData);
     categoryFilter.addEventListener("change", filterData);
+
+    // Recalcula a paginação ao redimensionar a tela
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        renderProducts();
+      }, 100);
+    });
 
     loadData();
   </script>
