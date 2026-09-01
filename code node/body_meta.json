@@ -1,0 +1,8 @@
+{
+    "topic": "minicurso_n8n_guilherme_e_caio",
+    "title": "🚨 Meta de Preço Atingida!",
+    "message": "O produto {{ $json.nome }} baixou para R$ {{ $json.preco_atual }} (Preço alvo: R$ {{ $json.preco_alvo }}).",
+    "click": "{{ $json.url }}",
+    "priority": 4,
+    "tags": ["tada", "moneybag"]
+  }
