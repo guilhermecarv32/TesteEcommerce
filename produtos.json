@@ -1,6 +1,6 @@
 [
     { "id": "ps5", "name": "PlayStation 5 Slim 1TB", "category": "Tecnologia", "price": "3899.00", "icon": "🎮", "desc": "Console Sony PlayStation 5 Slim com leitor de disco e 1TB SSD." },
-    { "id": "xbox", "name": "Xbox Series X 1TB", "category": "Tecnologia", "price": "4999.00", "icon": "🎮", "desc": "Console Microsoft Xbox Series X 1TB 4K 120FPS." },
+    { "id": "xbox", "name": "Xbox Series X 1TB", "category": "Tecnologia", "price": "1999.00", "icon": "🎮", "desc": "Console Microsoft Xbox Series X 1TB 4K 120FPS." },
     { "id": "switch", "name": "Nintendo Switch OLED 64GB", "category": "Tecnologia", "price": "2100.00", "icon": "🕹️", "desc": "Console portátil Nintendo Switch com tela OLED de 7 polegadas." },
     { "id": "iphone15", "name": "iPhone 15 128GB Preto", "category": "Tecnologia", "price": "4899.00", "icon": "📱", "desc": "Smartphone Apple iPhone 15 com câmera de 48MP e Dynamic Island." },
     { "id": "galaxys24", "name": "Samsung Galaxy S24 Ultra 256GB", "category": "Tecnologia", "price": "6499.00", "icon": "📱", "desc": "Galaxy S24 Ultra com Galaxy AI, câmera 200MP e caneta S-Pen." },
@@ -10,7 +10,7 @@
     { "id": "teclado-mecanico", "name": "Teclado Mecânico RGB Switch Red", "category": "Tecnologia", "price": "349.00", "icon": "⌨️", "desc": "Teclado mecânico compacto ABNT2 com iluminação RGB." },
     { "id": "headphone-anc", "name": "Fone Headphone ANC Bluetooth", "category": "Tecnologia", "price": "599.00", "icon": "🎧", "desc": "Headphone sem fio com cancelamento ativo de ruído." },
   
-    { "id": "airfryer", "name": "Fritadeira Air Fryer Digital 4L", "category": "Casa & Cozinha", "price": "319.90", "icon": "🍟", "desc": "Fritadeira sem óleo digital touch screen com timer 60 min." },
+    { "id": "airfryer", "name": "Fritadeira Air Fryer Digital 4L", "category": "Casa & Cozinha", "price": "119.90", "icon": "🍟", "desc": "Fritadeira sem óleo digital touch screen com timer 60 min." },
     { "id": "robo-aspirador", "name": "Robô Aspirador de Pó Inteligente", "category": "Casa & Cozinha", "price": "1250.00", "icon": "🤖", "desc": "Aspirador robô com navegação a laser e função passar pano." },
     { "id": "cafeteira", "name": "Cafeteira Nespresso Essenza Mini", "category": "Casa & Cozinha", "price": "469.00", "icon": "☕", "desc": "Cafeteira de cápsulas 19 bar compacta." },
     { "id": "panela-eletrica", "name": "Panela de Pressão Elétrica 5L", "category": "Casa & Cozinha", "price": "429.00", "icon": "🍲", "desc": "Panela de pressão programável com 10 funções de segurança." },

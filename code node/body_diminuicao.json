@@ -1,5 +1,5 @@
 {
-    "topic": "minicurso_n8n_guilherme_e_caio",
+    "topic": "minicurso_n8n_weekit",
     "title": "📉 Preço Baixou (Ainda acima da meta)",
     "message": "O produto {{ $json.nome }} baixou para R$ {{ $json.preco_atual }} (era {{ $json.ultimo_preco }}), mas seu alvo é R$ {{ $json.preco_alvo }}.",
     "click": "{{ $json.url }}",
