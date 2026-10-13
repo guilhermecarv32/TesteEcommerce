@@ -10,7 +10,7 @@
     { "id": "teclado-mecanico", "name": "Teclado Mecânico RGB Switch Red", "category": "Tecnologia", "price": "349.00", "icon": "⌨️", "desc": "Teclado mecânico compacto ABNT2 com iluminação RGB." },
     { "id": "headphone-anc", "name": "Fone Headphone ANC Bluetooth", "category": "Tecnologia", "price": "599.00", "icon": "🎧", "desc": "Headphone sem fio com cancelamento ativo de ruído." },
   
-    { "id": "airfryer", "name": "Fritadeira Air Fryer Digital 4L", "category": "Casa & Cozinha", "price": "119.90", "icon": "🍟", "desc": "Fritadeira sem óleo digital touch screen com timer 60 min." },
+    { "id": "airfryer", "name": "Fritadeira Air Fryer Digital 4L", "category": "Casa & Cozinha", "price": "379.90", "icon": "🍟", "desc": "Fritadeira sem óleo digital touch screen com timer 60 min." },
     { "id": "robo-aspirador", "name": "Robô Aspirador de Pó Inteligente", "category": "Casa & Cozinha", "price": "1250.00", "icon": "🤖", "desc": "Aspirador robô com navegação a laser e função passar pano." },
     { "id": "cafeteira", "name": "Cafeteira Nespresso Essenza Mini", "category": "Casa & Cozinha", "price": "469.00", "icon": "☕", "desc": "Cafeteira de cápsulas 19 bar compacta." },
     { "id": "panela-eletrica", "name": "Panela de Pressão Elétrica 5L", "category": "Casa & Cozinha", "price": "429.00", "icon": "🍲", "desc": "Panela de pressão programável com 10 funções de segurança." },
